@@ -1,0 +1,61 @@
+<!doctype html>
+<html ng-app="Calc">
+<head>
+<meta charset="utf-8">
+<title>
+Shop Cart Calculator v0.1
+</title>
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/main.css" rel="stylesheet">
+</head>
+<body>
+<div ng-controller="cartController" >
+	<div class="container">
+		<div class="col-sm-4">
+			<h2>Добавить продукт</h2>
+		</div>
+	</div>
+	<div class="container input-group">
+		<div class="col-sm-2 fields">
+			<p>Продукт</p>
+			 <input ng-model="addMe.name" class="form-control">
+		 </div>
+		 <div class="col-sm-1 fields">
+			 <p>Цена</p>
+			 <input type="number" ng-model="addMe.price" class="form-control">
+		 </div>
+		 <div class="col-sm-2 addbutton fields">
+		 	<button ng-click="addItem()" class="btn btn-default">Добавить</button>
+		 </div>
+	</div>
+	<hr>
+		 <div class="container">
+			<div class="col-sm-6">
+				<h2>Корзина</h2>
+				<table class="table table-striped">
+						<tr>
+							<td>Продукт</td>
+							<td>Цена</td>
+							<td>Цена со скидкой</td>
+						</tr>
+						<tr ng-repeat="item in items" ng-init="setDiscount(item)">
+							<td>{{item.name}}</td>
+							<td>{{item.price}}</td>
+							<td>{{item.dprice}}</td>
+						</tr>
+				</table>
+			</div>
+		</div>
+		<div class="container">
+			<div class="col-sm-6">
+				<p>Применить скидку <input ng-model="discount" class="form-control shortfield"> рублей <button ng-click="setDiscount(); setModulus()" class="btn btn-default">Применить</button></p> 
+			</div>
+		</div>
+</div>
+<script src="app/js/angular.min.js"></script>
+<script type="text/javascript">
+angular.module('Calc', []);
+</script>
+<script src="app/controllers/cartController.js"></script>
+</body>
+</html>
